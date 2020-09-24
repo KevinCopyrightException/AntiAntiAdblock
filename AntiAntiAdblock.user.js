@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AntiAntiAdblock
 // @namespace    http://tampermonkey.net/
-// @version      1.3
+// @version      1.4
 // @description  Fuck Anti Adblock
 // @author       You
 // @match        *://*/*
@@ -17,6 +17,8 @@ var pcGamerCookies = false;
 $.noConflict();
 jQuery(document).ready(function ($) {
 
+    // Version 1.4
+    
     // Loading Time Differences
     setTimeout(disableAntiAdblock, 500);
     setTimeout(disableAntiAdblock, 1500);
