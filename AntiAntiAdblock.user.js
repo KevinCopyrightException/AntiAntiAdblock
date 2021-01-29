@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AntiAntiAdblock
 // @namespace    http://tampermonkey.net/
-// @version      1.7.1
+// @version      1.8
 // @description  Fuck Anti Adblock
 // @author       You
 // @match        *://*/*
