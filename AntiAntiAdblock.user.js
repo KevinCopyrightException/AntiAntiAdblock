@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AntiAntiAdblock
 // @namespace    http://tampermonkey.net/
-// @version      1.8
+// @version      1.9
 // @description  Fuck Anti Adblock
 // @author       You
 // @match        *://*/*
@@ -83,9 +83,9 @@ jQuery(document).ready(function ($) {
             document.querySelector("div[class^='sp_veil']").remove();
             document.getElementsByTagName("BODY")[0].style.overflowY = "auto";
             document.getElementsByTagName("HTML")[0].classList.remove("sp-message-open");
-        }
 
-        standardAdblock = true;
+            standardAdblock = true;
+        }
     }
 
     function triggerContinueWithoutSupporting() {
@@ -137,8 +137,8 @@ jQuery(document).ready(function ($) {
             document.getElementsByTagName("BODY")[0].style.overflow = "auto";
             document.querySelector("[id='CybotCookiebotDialogBodyUnderlay']").remove();
             document.querySelector("[id='CybotCookiebotDialogBodyLevelButtonLevelOptinAllowallSelection']").click();
+
+            digitalTrends = true;
         }
-        
-        digitalTrends = true;
     }
 });
