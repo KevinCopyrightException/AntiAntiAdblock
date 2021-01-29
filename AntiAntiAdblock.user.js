@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AntiAntiAdblock
 // @namespace    http://tampermonkey.net/
-// @version      1.5
+// @version      1.6
 // @description  Fuck Anti Adblock
 // @author       You
 // @match        *://*/*
@@ -11,6 +11,7 @@
 
 // Default
 var standardAdblock = false;
+var continueWithoutSupporting = false;
 
 // Specific Anti Adblocks
 var frageNetAdblock = false;
@@ -35,6 +36,13 @@ jQuery(document).ready(function ($) {
             // Standard Modal Blocker
             try {
                 disableStandardAdblock();
+            } catch (Exception) {
+                //...
+            }
+
+            // Continue Without Supporting Button
+            try {
+                triggerContinueWithoutSupporting();
             } catch (Exception) {
                 //...
             }
@@ -78,6 +86,21 @@ jQuery(document).ready(function ($) {
         document.getElementsByTagName("HTML")[0].classList.remove("sp-message-open");
 
         standardAdblock = true;
+    }
+
+    function triggerContinueWithoutSupporting() {
+
+        if (continueWithoutSupporting) {
+            return;
+        }
+
+        for (const a of document.querySelectorAll("a")) {
+            if (a.textContent.includes("Continue without supporting")) {
+              a.click();
+            }
+          }
+
+        continueWithoutSupporting = true;
     }
 
     function disableFrageNetAdblock() {
