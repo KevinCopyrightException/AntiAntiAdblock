@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AntiAntiAdblock
 // @namespace    http://tampermonkey.net/
-// @version      1.7
+// @version      1.7.1
 // @description  Fuck Anti Adblock
 // @author       You
 // @match        *://*/*
@@ -78,10 +78,8 @@ jQuery(document).ready(function ($) {
             return;
         }
 
-        var spMessage =  document.querySelector("div[id^='sp_message_id']");
-
-        if (spMessage != null){
-            spMessage.remove();
+        if (document.querySelector("div[id^='sp_message_id']") != null){
+            document.querySelector("div[id^='sp_message_id']").remove();
             document.querySelector("div[class^='sp_veil']").remove();
             document.getElementsByTagName("BODY")[0].style.overflowY = "auto";
             document.getElementsByTagName("HTML")[0].classList.remove("sp-message-open");
@@ -133,10 +131,8 @@ jQuery(document).ready(function ($) {
             return;
         }
 
-        var overlayDiv = document.querySelector("div[class^='fEy1Z2XT']");
-
-        if (overlayDiv != null){
-            overlayDiv.remove();
+        if (document.querySelector("div[class^='fEy1Z2XT']") != null){
+            document.querySelector("div[class^='fEy1Z2XT']").remove();
             document.getElementsByTagName("HTML")[0].style.overflow = "auto";
             document.getElementsByTagName("BODY")[0].style.overflow = "auto";
             document.querySelector("[id='CybotCookiebotDialogBodyUnderlay']").remove();
