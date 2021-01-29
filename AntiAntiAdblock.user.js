@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AntiAntiAdblock
 // @namespace    http://tampermonkey.net/
-// @version      1.6
+// @version      1.7
 // @description  Fuck Anti Adblock
 // @author       You
 // @match        *://*/*
@@ -20,8 +20,6 @@ var digitalTrends = false;
 
 $.noConflict();
 jQuery(document).ready(function ($) {
-
-    // Version 1.5
     
     // Loading Time Differences
     setTimeout(disableAntiAdblock, 500);
@@ -80,10 +78,14 @@ jQuery(document).ready(function ($) {
             return;
         }
 
-        document.querySelector("div[id^='sp_message_id']").remove();
-        document.querySelector("div[class^='sp_veil']").remove();
-        document.getElementsByTagName("BODY")[0].style.overflowY = "auto";
-        document.getElementsByTagName("HTML")[0].classList.remove("sp-message-open");
+        var spMessage =  document.querySelector("div[id^='sp_message_id']");
+
+        if (spMessage != null){
+            spMessage.remove();
+            document.querySelector("div[class^='sp_veil']").remove();
+            document.getElementsByTagName("BODY")[0].style.overflowY = "auto";
+            document.getElementsByTagName("HTML")[0].classList.remove("sp-message-open");
+        }
 
         standardAdblock = true;
     }
@@ -131,11 +133,15 @@ jQuery(document).ready(function ($) {
             return;
         }
 
-        document.getElementsByTagName("HTML")[0].style.overflow = "auto";
-        document.getElementsByTagName("BODY")[0].style.overflow = "auto";
-        document.querySelector("div[class^='fEy1Z2XT']").remove();
-        document.querySelector("[id='CybotCookiebotDialogBodyUnderlay']").remove();
-        document.querySelector("[id='CybotCookiebotDialogBodyLevelButtonLevelOptinAllowallSelection']").click();
+        var overlayDiv = document.querySelector("div[class^='fEy1Z2XT']");
+
+        if (overlayDiv != null){
+            overlayDiv.remove();
+            document.getElementsByTagName("HTML")[0].style.overflow = "auto";
+            document.getElementsByTagName("BODY")[0].style.overflow = "auto";
+            document.querySelector("[id='CybotCookiebotDialogBodyUnderlay']").remove();
+            document.querySelector("[id='CybotCookiebotDialogBodyLevelButtonLevelOptinAllowallSelection']").click();
+        }
         
         digitalTrends = true;
     }
